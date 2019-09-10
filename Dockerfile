@@ -18,10 +18,10 @@ COPY igbinary-3.0.1.tgz /usr/local/src
 COPY msgpack-2.0.3.tgz /usr/local/src
 COPY redis-5.0.2.tgz /usr/local/src
 COPY yac-2.0.2.tgz /usr/local/src
-COPY yaconf-1.0.7.tgz /usr/local/src
+COPY SeasLog-2.0.2.tgz /usr/local/src
 
 #解压依赖包
-RUN cd /usr/local/src && tar xzvf php-7.2.22.tar.gz && tar xzvf swoole-4.4.5.tar.gz && tar xzvf nginx-1.12.2.tar.gz && tar xzvf pcre-8.43.tar.gz && tar xzvf yaf-3.0.8.tgz && tar xzvf igbinary-3.0.1.tgz && tar xzvf msgpack-2.0.3.tgz && tar xzvf redis-5.0.2.tgz && tar xzvf yac-2.0.2.tgz && tar xzvf yaconf-1.0.7.tgz
+RUN cd /usr/local/src && tar xzvf php-7.2.22.tar.gz && tar xzvf swoole-4.4.5.tar.gz && tar xzvf nginx-1.12.2.tar.gz && tar xzvf pcre-8.43.tar.gz && tar xzvf yaf-3.0.8.tgz && tar xzvf igbinary-3.0.1.tgz && tar xzvf msgpack-2.0.3.tgz && tar xzvf redis-5.0.2.tgz && tar xzvf yac-2.0.2.tgz && tar xzvf yaconf-1.0.7.tgz && tar xzvf SeasLog-2.0.2.tgz
 
 #安装php
 RUN cd /usr/local/src/php-7.2.22 && ./configure --prefix=/usr/local/php --with-config-file-path=/usr/local/php/etc --with-gd --with-iconv --with-zlib --with-curl --with-pdo-mysql --with-png-dir --with-jpeg-dir --with-freetype-dir --with-fpm-user=www --with-fpm-group=www --with-gettext --with-openssl --enable-xml --enable-bcmath --enable-fpm --enable-mbstring --enable-sockets --enable-session --with-gettext
@@ -45,7 +45,7 @@ RUN cd /usr/local/src/igbinary-3.0.1 && /usr/local/php/bin/phpize && ./configure
 RUN cd /usr/local/src/msgpack-2.0.3 && /usr/local/php/bin/phpize && ./configure --with-php-config=/usr/local/php/bin/php-config && make && make install
 RUN cd /usr/local/src/yac-2.0.2 && /usr/local/php/bin/phpize && ./configure --with-php-config=/usr/local/php/bin/php-config && make && make install
 RUN cd /usr/local/src/yaconf-1.0.7 && /usr/local/php/bin/phpize && ./configure --with-php-config=/usr/local/php/bin/php-config && make && make install
-RUN cd /usr/local/src/redis-5.0.2 && /usr/local/php/bin/phpize && ./configure --with-php-config=/usr/local/php/bin/php-config && make && make install
+RUN cd /usr/local/src/SeasLog-2.0.2 && /usr/local/php/bin/phpize && ./configure --with-php-config=/usr/local/php/bin/php-config && make && make install
 
 #安装nginx
 RUN cd /usr/local/src/pcre-8.43 && ./configure && make && make install
